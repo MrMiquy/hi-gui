@@ -1,8 +1,24 @@
-#include "../Headers/Window.h"
+#include <GL/glut.h>
 
-int main(int argc, char *argv[]) {
-    HI_Window* win = HI_CreateWindow(L"Taste of", L"taste", 600, 400, NULL);
-    HI_Window* win2 = HI_CreateWindow(L"Red", L"red", 300, 100, win);
+void displayMe(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_POLYGON);
+        glVertex3f(0.0, 0.0, 0.0);
+        glVertex3f(0.5, 0.0, 0.0);
+        glVertex3f(0.5, 0.5, 0.0);
+        glVertex3f(0.0, 0.5, 0.0);
+    glEnd();
+    glFlush();
 
-    return HI_Run();
+}int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE);
+    glutInitWindowSize(300, 300);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("SAMPLE TEST");
+    glutDisplayFunc(displayMe);
+    glutMainLoop();
+    return 0;
 }
